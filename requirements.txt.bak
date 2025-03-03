@@ -1,6 +1,9 @@
-﻿flask==2.0.1
+﻿# flask==2.0.1
 # werkzeug-2.3.0
-werkzeug
+
+
+flask==2.2.5
+werkzeug==2.3.0
 
 
 
