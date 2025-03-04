@@ -1,3 +1,14 @@
+em <div id="drop-area"> mude a cor quando for posicionado o ponteiro do mouse..
+sabe tipo para diser que esta no local.. acho que vc me entende..
+acrescente tb em 
+<section class="jogos-aleatorios-section" style="border: 3px solid black; padding: 20px; margin: 20px 0;">
+um botão para baixar as informações em excel lembrando de formatar com fundo preto e fonte branca as colunas e ajustar com suas informações.. 
+
+
+
+
+
+
 (venv) PS J:\Meu Drive\ProjetosPython\Loterias\Estrategias\MegaSena\AnaliseDosPalpitesMS> dir
 
 
@@ -38,7 +49,22 @@ if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
     app.run(host="0.0.0.0", port=port)
 	
-	<!DOCTYPE html>
+	#LOCALHOST
+# flask==2.0.1
+# werkzeug-2.3.0
+
+#RENDER
+flask==2.2.5
+werkzeug==2.3.0
+
+@echo off
+echo Iniciando Analise de Palpites da Mega Sena...
+cd "J:\Meu Drive\ProjetosPython\Loterias\Estrategias\MegaSena\AnaliseDosPalpitesMS"
+call venv\Scripts\activate.bat
+python app.py
+
+
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -214,6 +240,7 @@ function analisarPalpite(inputs, analiseContainer) {
 // Inicializa a pÃ¡gina quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', init);
 
+
 /* Reset e estilos bÃ¡sicos */
 * {
     margin: 0;
@@ -373,5 +400,3 @@ footer {
         font-size: 1rem;
     }
 }
-
-

@@ -9,14 +9,26 @@
 <body>
     <div class="container">
         <header>
-            <h1>Análise de Palpites da Mega Sena</h1>
-            <p>Digite seus palpites e descubra QUANTOS e QUAIS dígitos foram usado.</p>
-        </header>
+            <h1>Análise de Palpites para Mega Sena</h1>
+			<p>Para descobrir QUANTOS e QUAIS digitos foram usados na geração de palpites.</p>
+		</header>
+		
+		<div class="instrucaoes">
+			<h2>Instruções de uso:</h2>
+				<ol>
+					<li>Na seção "Seus Palpites"<small class="texto-menor"> Digite manualmente.</small></li>
+					<li>Na seção "Importar Palpites"<small class="texto-menor"> Arraste/Solte ou faça o upload.</small></li>
+					<li>Na seção "Gerador de Palpites Aleatórios"<small class="texto-menor"> Selecione quantos dígitos, a quantidade de jogos.</small></li>
+				</ol>
+		</div><br />
+		
+
 
 
         <main>
-            <section class="palpites-section">
-                <h2>Seus Palpites</h2>
+			<section class="jogos-aleatorios-section" style="border: 3px solid black; padding: 20px; margin: 20px 0;">
+            <!--<section class="palpites-section">-->
+				<h2 style="color: black;">Seus Palpites</h2>
                 <div id="palpites-container">
                     <div class="palpite-row">
                         <div class="numeros-container">
@@ -33,6 +45,146 @@
                     </div>
                 </div>
             </section>
+			
+			<section class="jogos-aleatorios-section" style="border: 3px solid black; padding: 20px; margin: 20px 0;">
+			<!--<section class="arraste-section">-->
+				<h2 style="color: black;">Importar Palpites</h2>
+			   <p>Arraste arquivos com jogos da Mega Sena ou clique para selecionar</p>
+				
+				<div id="drop-area">
+					<form class="upload-form">
+						<input type="file" id="fileElem" multiple accept=".txt,.csv" onchange="handleFiles(this.files)">
+						<label class="upload-button" for="fileElem">
+							<div class="upload-icon">
+								<span class="arrow">↑</span>
+							</div>
+							<span>Selecionar arquivos ou arrastar aqui</span>
+						</label>
+					</form>
+				</div>
+				
+				<div id="jogos-importados-container">
+					<h3>Jogos Importados</h3>
+					<div class="jogos-table-container">
+						<table id="jogos-importados-table">
+							<thead>
+								<tr>
+									<th>Jogo</th>
+									<th>Dígitos Usados</th>
+									<th>Dígitos Ordenados</th>
+									<th>Quantidade</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- Os jogos importados serão exibidos aqui -->
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</section>
+			<section class="jogos-aleatorios-section" style="border: 3px solid black; padding: 20px; margin: 20px 0;">
+			<!--<section class="jogos-aleatorios-section">-->
+				<h2 style="color: black;">Gerador de Jogos Aleatórios</h2>
+				<p>Crie jogos aleatórios para a Mega Sena com base na quantidade de dígitos escolhida</p>
+				
+				<div class="gerador-container">
+					<div class="controles-container">
+						<div class="form-group">
+							<label for="quantidade-digitos">Quantidade de dígitos:</label>
+							<select id="quantidade-digitos">
+								<option value="">Selecione a quantidade</option>
+								<option value="1">1 dígito</option>
+								<option value="2">2 dígitos</option>
+								<option value="3">3 dígitos</option>
+								<option value="4">4 dígitos</option>
+								<option value="5">5 dígitos</option>
+								<option value="6">6 dígitos</option>
+								<option value="7">7 dígitos</option>
+								<option value="8">8 dígitos</option>
+								<option value="9">9 dígitos</option>
+								<option value="10">10 dígitos (todos)</option>
+							</select>
+						</div>
+						
+						<div class="form-group">
+							<label for="quantidade-jogos">Quantidade de jogos:</label>
+							<input type="number" id="quantidade-jogos" min="1" max="100" value="5">
+						</div>
+						
+						<div class="form-group">
+							<label>Dígitos específicos (opcional):</label>
+							<div class="digitos-checkbox-container">
+								<div class="digito-checkbox">
+									<input type="checkbox" id="digito-0" value="0">
+									<label for="digito-0">0</label>
+								</div>
+								<div class="digito-checkbox">
+									<input type="checkbox" id="digito-1" value="1">
+									<label for="digito-1">1</label>
+								</div>
+								<div class="digito-checkbox">
+									<input type="checkbox" id="digito-2" value="2">
+									<label for="digito-2">2</label>
+								</div>
+								<div class="digito-checkbox">
+									<input type="checkbox" id="digito-3" value="3">
+									<label for="digito-3">3</label>
+								</div>
+								<div class="digito-checkbox">
+									<input type="checkbox" id="digito-4" value="4">
+									<label for="digito-4">4</label>
+								</div>
+								<div class="digito-checkbox">
+									<input type="checkbox" id="digito-5" value="5">
+									<label for="digito-5">5</label>
+								</div>
+								<div class="digito-checkbox">
+									<input type="checkbox" id="digito-6" value="6">
+									<label for="digito-6">6</label>
+								</div>
+								<div class="digito-checkbox">
+									<input type="checkbox" id="digito-7" value="7">
+									<label for="digito-7">7</label>
+								</div>
+								<div class="digito-checkbox">
+									<input type="checkbox" id="digito-8" value="8">
+									<label for="digito-8">8</label>
+								</div>
+								<div class="digito-checkbox">
+									<input type="checkbox" id="digito-9" value="9">
+									<label for="digito-9">9</label>
+								</div>
+							</div>
+						</div>
+						
+						<button id="gerar-jogos-btn" class="button">Gerar Jogos Aleatórios</button>
+					</div>
+					
+					<div id="jogos-gerados-container" class="jogos-gerados-container" style="display: none;">
+						<h3>Jogos Gerados</h3>
+						<div class="jogos-table-container">
+							<table id="jogos-gerados-table">
+								<thead>
+									<tr>
+										<th>Jogo</th>
+										<th>Dígitos Usados</th>
+										<th>Dígitos Ordenados</th>
+										<th>Quantidade</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- Os jogos gerados serão exibidos aqui -->
+								</tbody>
+							</table>
+						</div>
+						
+						<div class="acoes-container">
+							<button id="download-excel-btn" class="button">Baixar em Excel</button>
+							<button id="gerar-mais-btn" class="button">Gerar Mais Jogos</button>
+						</div>
+					</div>
+				</div>
+			</section>
         </main>
 
     <footer>Feito por: <i>Márcio Fernando Maia -  Todos os direitos reservado - 2025</footer>
