@@ -342,7 +342,7 @@ footer {
     background-color: var(--success-color);
 }
 .texto-menor {
-    font-size: 60%;
+    font-size: 50%;
 }
 /* Estilos para seção de jogos aleatórios */
 .jogos-aleatorios-section {
