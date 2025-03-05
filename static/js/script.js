@@ -367,23 +367,23 @@ function exibirJogosImportados(jogos) {
         tr.appendChild(tdJogo);
         
         // Coluna dos dígitos usados
-        const tdDigitos = document.createElement('td');
-        const digitosDiv = document.createElement('div');
-        digitosDiv.className = 'digitos-celula';
+        //const tdDigitos = document.createElement('td');
+        //const digitosDiv = document.createElement('div');
+        //digitosDiv.className = 'digitos-celula';
         
-        jogo.digitosUsados.forEach(digito => {
-            const digitoSpan = document.createElement('span');
-            digitoSpan.className = 'digito-item';
-            digitoSpan.textContent = digito;
-            digitoSpan.style.color = 'yellow'; // Cor negra para Digitos Usados
-            digitosDiv.appendChild(digitoSpan);
+        //jogo.digitosUsados.forEach(digito => {
+        //    const digitoSpan = document.createElement('span');
+        //    digitoSpan.className = 'digito-item';
+        //    digitoSpan.textContent = digito;
+        //    digitoSpan.style.color = 'yellow'; // Cor negra para Digitos Usados
+        //    digitosDiv.appendChild(digitoSpan);
             
             // Adicionar espaço entre os dígitos
-            digitosDiv.appendChild(document.createTextNode(' '));
-        });
+        //    digitosDiv.appendChild(document.createTextNode(' '));
+        //});
         
-        tdDigitos.appendChild(digitosDiv);
-        tr.appendChild(tdDigitos);
+        //tdDigitos.appendChild(digitosDiv);
+       // tr.appendChild(tdDigitos);
         
         // Coluna dos dígitos ordenados
         const tdDigitosOrdenados = document.createElement('td');
@@ -423,7 +423,7 @@ function exibirJogosImportados(jogos) {
     }
 }
 
-// Função para download dos jogos importados em Excel
+// Função corrigida para download dos jogos importados em Excel
 function downloadJogosImportadosExcel() {
     // Verificar se há jogos importados
     const jogosImportadosTable = document.querySelector('#jogos-importados-table tbody');
@@ -433,6 +433,8 @@ function downloadJogosImportadosExcel() {
         return;
     }
     
+    console.log('Iniciando download Excel - quantidade de linhas:', jogosImportadosTable.rows.length);
+    
     // Criar conteúdo HTML para Excel
     let excelContent = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40">';
     excelContent += '<head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>Jogos Importados</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head>';
@@ -441,7 +443,6 @@ function downloadJogosImportadosExcel() {
     // Adicionar cabeçalho com fundo preto e texto branco
     excelContent += '<tr>';
     excelContent += '<th style="background-color: #000000; color: #ffffff;">Jogo</th>';
-    excelContent += '<th style="background-color: #000000; color: #ffffff;">Dígitos Usados</th>';
     excelContent += '<th style="background-color: #000000; color: #ffffff;">Dígitos Ordenados</th>';
     excelContent += '<th style="background-color: #000000; color: #ffffff;">Quantidade</th>';
     excelContent += '</tr>';
@@ -454,31 +455,47 @@ function downloadJogosImportadosExcel() {
         // Coluna Jogo
         excelContent += `<td style="text-align: center;">${row.cells[0].textContent}</td>`;
         
-        // Coluna Dígitos Usados - extrair texto dos dígitos
-        const digitosUsados = Array.from(row.cells[1].querySelectorAll('.digito-item'))
-            .map(el => el.textContent.trim())
-            .join(' ');
-        excelContent += `<td style="text-align: center;">${digitosUsados}</td>`;
-        
         // Coluna Dígitos Ordenados
-        excelContent += `<td style="text-align: center;">${row.cells[2].textContent}</td>`;
+        excelContent += `<td style="text-align: center;">${row.cells[1].textContent}</td>`;
         
         // Coluna Quantidade
-        excelContent += `<td style="text-align: center;">${row.cells[3].textContent}</td>`;
+        excelContent += `<td style="text-align: center;">${row.cells[2].textContent}</td>`;
         
         excelContent += '</tr>';
     }
     
     excelContent += '</table></body></html>';
     
-    // Criar o blob com tipo MIME para Excel
-    const blob = new Blob([excelContent], {type: 'application/vnd.ms-excel'});
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = 'jogos_importados_mega_sena.xls';
-    link.click();
-    
-    showNotification('Download dos jogos importados iniciado!', 'success');
+    try {
+        // Criar o blob com tipo MIME para Excel
+        const blob = new Blob([excelContent], {type: 'application/vnd.ms-excel'});
+        
+        // Criar URL para o blob
+        const url = URL.createObjectURL(blob);
+        
+        // Criar um elemento de link para download
+        const downloadLink = document.createElement('a');
+        downloadLink.href = url;
+        downloadLink.download = 'jogos_importados_mega_sena.xls';
+        
+        // Adicionar o link ao documento (necessário em alguns navegadores)
+        document.body.appendChild(downloadLink);
+        
+        // Acionar o clique no link
+        downloadLink.click();
+        
+        // Remover o link do documento
+        setTimeout(() => {
+            document.body.removeChild(downloadLink);
+            URL.revokeObjectURL(url);
+        }, 100);
+        
+        console.log('Download iniciado com sucesso');
+        showNotification('Download dos jogos importados iniciado!', 'success');
+    } catch (error) {
+        console.error('Erro ao gerar arquivo Excel:', error);
+        showNotification('Erro ao gerar o arquivo Excel: ' + error.message, 'error');
+    }
 }
 
 // Funções auxiliares para UI
