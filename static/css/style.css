@@ -252,7 +252,7 @@ footer {
 #jogos-importados-table th,
 #jogos-importados-table td {
     padding: 12px;
-    text-align: left;
+    text-align: center;
     border-bottom: 1px solid #ddd;
 }
 
@@ -508,7 +508,7 @@ footer {
 /* Centralizar cabeçalhos da tabela */
 #jogos-gerados-table th,
 #jogos-importados-table th {
-    text-align: left;
+    text-align: center;
     background-color: var(--primary-color);
     color: white;
     position: sticky;
@@ -518,7 +518,7 @@ footer {
 /* Centralizar conteúdo das células */
 #jogos-gerados-table td,
 #jogos-importados-table td {
-    text-align: left;
+    text-align: center;
     vertical-align: middle;
     padding: 12px;
 }
@@ -703,6 +703,25 @@ footer {
         word-break: break-word;
     }
 }
+
+/* Para Jogos Gerados */
+@media screen and (max-width: 768px) {
+    .jogos-gerados-container,
+    .jogos-gerados-table {
+       font-size: clamp(8px, 2vw, 12px); /* fonte seja responsiva e se ajuste dinamicamente ao tamanho da tela */
+    }
+ 
+
+}
+
+@media screen and (max-width: 480px) {
+    .jogos-gerados-container,
+    .jogos-gerados-table {
+        font-size: clamp(8px, 2vw, 12px); /* fonte seja responsiva e se ajuste dinamicamente ao tamanho da tela */
+    }
+    
+
+
 
 /* Garantir que a tabela seja rolável horizontalmente quando necessário */
 .jogos-table-container {
