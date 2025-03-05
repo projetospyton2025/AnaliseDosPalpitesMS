@@ -671,7 +671,7 @@ footer {
         font-size: 10px; /* Fonte menor para telas médias 
     }
  */   
- Ajustes para tabelas em telas pequenas 
+ /* Ajustes para tabelas em telas pequenas  */
 @media screen and (max-width: 768px) {
     #jogos-importados-table,
     #jogos-gerados-table {
