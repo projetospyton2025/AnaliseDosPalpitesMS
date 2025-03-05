@@ -533,8 +533,8 @@ footer {
 .digitos-celula {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin: 5px 0;
+    gap: 1px;
+    margin: 2px 0;
     justify-content: center; /* Centraliza os dígitos horizontalmente */
 }
 

@@ -367,23 +367,23 @@ function exibirJogosImportados(jogos) {
         tr.appendChild(tdJogo);
         
         // Coluna dos dígitos usados
-        //const tdDigitos = document.createElement('td');
-        //const digitosDiv = document.createElement('div');
-        //digitosDiv.className = 'digitos-celula';
+        const tdDigitos = document.createElement('td');
+        const digitosDiv = document.createElement('div');
+        digitosDiv.className = 'digitos-celula';
         
-        //jogo.digitosUsados.forEach(digito => {
-        //    const digitoSpan = document.createElement('span');
-        //    digitoSpan.className = 'digito-item';
-        //    digitoSpan.textContent = digito;
-        //    digitoSpan.style.color = 'yellow'; // Cor negra para Digitos Usados
-        //    digitosDiv.appendChild(digitoSpan);
+        jogo.digitosUsados.forEach(digito => {
+           const digitoSpan = document.createElement('span');
+           digitoSpan.className = 'digito-item';
+           digitoSpan.textContent = digito;
+            digitoSpan.style.color = 'yellow'; // Cor negra para Digitos Usados
+            digitosDiv.appendChild(digitoSpan);
             
             // Adicionar espaço entre os dígitos
-        //    digitosDiv.appendChild(document.createTextNode(' '));
-        //});
+           digitosDiv.appendChild(document.createTextNode(' '));
+        });
         
-        //tdDigitos.appendChild(digitosDiv);
-       // tr.appendChild(tdDigitos);
+        tdDigitos.appendChild(digitosDiv);
+        tr.appendChild(tdDigitos);
         
         // Coluna dos dígitos ordenados
         const tdDigitosOrdenados = document.createElement('td');
@@ -443,6 +443,7 @@ function downloadJogosImportadosExcel() {
     // Adicionar cabeçalho com fundo preto e texto branco
     excelContent += '<tr>';
     excelContent += '<th style="background-color: #000000; color: #ffffff;">Jogo</th>';
+    excelContent += '<th style="background-color: #000000; color: #ffffff;">Dígitos Usados</th>';
     excelContent += '<th style="background-color: #000000; color: #ffffff;">Dígitos Ordenados</th>';
     excelContent += '<th style="background-color: #000000; color: #ffffff;">Quantidade</th>';
     excelContent += '</tr>';
