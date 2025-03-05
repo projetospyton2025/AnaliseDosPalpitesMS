@@ -668,7 +668,7 @@ footer {
 @media screen and (max-width: 768px) {
     #jogos-importados-table,
     #jogos-gerados-table {
-        font-size: 14px; /* Fonte menor para telas médias */
+        font-size: 10px; /* Fonte menor para telas médias */
     }
     
     #jogos-importados-table th,
@@ -682,7 +682,7 @@ footer {
 @media screen and (max-width: 480px) {
     #jogos-importados-table,
     #jogos-gerados-table {
-        font-size: 12px; /* Fonte ainda menor para telas pequenas */
+        font-size: 10px; /* Fonte ainda menor para telas pequenas */
     }
     
     #jogos-importados-table th,
