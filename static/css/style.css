@@ -664,13 +664,20 @@ footer {
         width: 100%;
     }
 }
-/* Ajustes para tabelas em telas pequenas */
+/* Ajustes para tabelas em telas pequenas 
 @media screen and (max-width: 768px) {
     #jogos-importados-table,
     #jogos-gerados-table {
-        font-size: 10px; /* Fonte menor para telas médias */
+        font-size: 10px; /* Fonte menor para telas médias 
     }
-    
+ */   
+ Ajustes para tabelas em telas pequenas 
+@media screen and (max-width: 768px) {
+    #jogos-importados-table,
+    #jogos-gerados-table {
+       font-size: clamp(8px, 2vw, 12px); /* fonte seja responsiva e se ajuste dinamicamente ao tamanho da tela */
+    }
+ 
     #jogos-importados-table th,
     #jogos-importados-table td,
     #jogos-gerados-table th,
@@ -682,7 +689,7 @@ footer {
 @media screen and (max-width: 480px) {
     #jogos-importados-table,
     #jogos-gerados-table {
-        font-size: 10px; /* Fonte ainda menor para telas pequenas */
+        font-size: clamp(8px, 2vw, 12px); /* fonte seja responsiva e se ajuste dinamicamente ao tamanho da tela */
     }
     
     #jogos-importados-table th,
